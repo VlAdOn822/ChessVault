@@ -1,5 +1,9 @@
 # Chess Vault: learn chess with Chess.com, Obsidian and Claude
 
+Chess.com keeps game analysis behind a Premium subscription. This Obsidian vault lets you study your own games without it: pull them from Chess.com and let Claude Code review them, surface recurring mistakes, and turn them into a training plan.
+
+Not affiliated with Chess.com.
+
 An Obsidian vault (a folder of markdown notes) for improving at chess:
 
 - **Chess.com** is where you play and get the engine's Game Review.
