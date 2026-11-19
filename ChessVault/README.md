@@ -185,7 +185,7 @@ Claude reads `CLAUDE.md` automatically, so it knows the structure and rules of t
 2. Import: `python import_chess.py`
 3. Run Chess.com **Game Review** on your losses and note the key mistakes.
 4. In Claude Code run the weekly review prompt.
-5. Read the updated [Mistake Types](Tactics/Mistake-Types.md) and pick next week's puzzle themes.
+5. Read the updated [Mistake Types](Tactics/Mistake-Types.md) and pick next week's puzzle themes or improve them in any other free way, if you don't have Chess.com subscribe.
 6. Do 15-20 puzzles daily on the weakest theme.
 
 ## Troubleshooting
