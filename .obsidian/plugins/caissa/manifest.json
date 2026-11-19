@@ -1,0 +1,14 @@
+{
+	"id": "caissa",
+	"name": "Caissa",
+	"version": "2.0.0",
+	"minAppVersion": "1.13.0",
+	"description": "Study chess in your vault. Openings, endgames, WCC games, Stockfish analysis, Lichess import, and Chessology coaching analytics with optional Claudian integration.",
+	"author": "TheEkrizdis",
+	"authorUrl": "",
+	"fundingUrl": {
+		"ko-fi": "https://ko-fi.com/ekrizdis",
+		"buy-me-a-coffee": "https://buymeacoffee.com/TheEkrizdis"
+	},
+	"isDesktopOnly": false
+}

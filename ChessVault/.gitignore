@@ -1,0 +1,7 @@
+# Personal data and local settings: do not publish
+config.json
+Games/*.md
+.obsidian/
+.claude/
+__pycache__/
+.DS_Store

@@ -1,0 +1,335 @@
+{
+  "main": {
+    "id": "876b52f5b056510c",
+    "type": "split",
+    "children": [
+      {
+        "id": "295aa36a7bf26507",
+        "type": "split",
+        "children": [
+          {
+            "id": "df65cc1c18114421",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "36f0a53bc5204ab2",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "ChessVault/CLAUDE.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "CLAUDE"
+                }
+              },
+              {
+                "id": "f875e9bcd290b5e8",
+                "type": "leaf",
+                "state": {
+                  "type": "terminal:documentation",
+                  "state": {
+                    "terminal:documentation": {
+                      "data": "# Terminal for Obsidian [![release](https://img.shields.io/github/v/release/polyipseity/obsidian-terminal)][latest release] [![Obsidian downloads](https://img.shields.io/badge/dynamic/json?logo=Obsidian&color=%238b6cef&label=downloads&query=$[\"terminal\"].downloads&url=https://raw.githubusercontent.com/obsidianmd/obsidian-releases/master/community-plugin-stats.json)][community plugin] [![Python](https://img.shields.io/badge/Python-≥3.9-gold?labelColor=blue&logo=Python&logoColor=white)][Python]\n\nIntegrate consoles, shells, and terminals inside [Obsidian].\n\n[![Buy Me a Coffee/embed][Buy Me a Coffee/embed]][Buy Me a Coffee]\n\n[Repository][repository] · [Changelog][changelog] · [Community plugin][community plugin] · [Related][related] · [Features](#features) · [Installation](#installation) · [Usage](#usage) · [Contributing](#contributing) · [Security](#security)\n\n![Trailer][trailer]\n\nFor first time users, read the [installation](#installation) section first!\n\nThis file is automatically opened on first install. You can reopen it in settings or command palette.\n\n## Features\n\n- Start external terminals from Obsidian.\n- Integrate terminals into Obsidian.\n- Has an emulated developer console usable on all platforms.\n- Supports multiple terminal profiles.\n- Has built-in keyboard shortcuts.\n- Automatically save and restore integrated terminal history.\n- Find in terminal.\n- Save terminal history as file.\n- Customize terminal appearance.\n- Show program status on terminal tabs.\n\n## Installation\n\n1. Install plugin.\n   - Community plugins\n     1. Install the [plugin][community plugin] from community plugins directly.\n   - Manual\n     1. Create directory `terminal` under `.obsidian/plugins` of your vault.\n     2. Place `manifest.json`, `main.js`, and `styles.css` from the [latest release] into the directory.\n   - Building (rolling)\n     1. Clone this repository, including its submodules.\n     2. Install [Bun](https://bun.sh) and [uv](https://docs.astral.sh/uv/).\n     3. Run `bun install` in the root directory.\n     4. Run `uv sync --locked` in the root directory.\n     5. Run `bun run obsidian:install <vault directory>` in the root directory.\n   - [Obsidian42 - BRAT](https://obsidian.md/plugins?id=obsidian42-brat) (rolling)\n     - See [their readme](https://github.com/TfTHacker/obsidian42-brat#readme).\n2. (optional for Windows, recommended) Install Python.\n   1. Install [Python] 3.9 or above. The default ConPTY backend needs no pip packages; the ConHost backend's resizer additionally needs Python packages. Use the profile's \"Copy install command\" button and run the command in PowerShell, or run `python -m pip install --upgrade \"psutil>=5.9.5\" \"pywinctl>=0.0.50\" \"typing_extensions>=4.7.1\"` if your profile uses `python`. <!-- Keep package minimums in sync with the runtime source, `src/python-requirements.json`. -->\n   2. On Windows, the plugin tries the profile's Python interpreter, then the interpreter in the plugin settings, then `python`, `python3`, and `py -3`, using the first working interpreter. Stored profile values stay unchanged. An empty profile Python field no longer disables Python on Windows; the ConHost resizer runs whenever a usable Python with its packages is found, and there is no setting to turn it off. If ConPTY is selected but no usable Python is found, its ConPTY host cannot be confirmed, or the host already failed with this Python configuration, that terminal opens with ConHost. If the ConPTY host fails while a terminal starts, that terminal shows an error and later terminals open with ConHost. The saved backend stays ConPTY; after installing or repairing Python, select \"Recheck Python\" in the plugin settings (or restart Obsidian) to retry ConPTY. On other platforms, configure the Python executable per profile and press the \"Check\" button to validate it.\n   3. On Windows, ConPTY terminals run on the console host that Windows Terminal ships (`OpenConsole.exe`) when Windows Terminal 1.22 or newer is installed, which passes more terminal replies to programs. Otherwise, or when it cannot start, they use the console host built into Windows. To always use the built-in one, turn off \"Windows Terminal console host\" in the plugin settings.\n3. Enable plugin.\n4. (optional) Configure plugin settings.\n\n## Usage\n\n- To start a new external or integrated terminal\n  - Ribbon\n    1. Click on the `Open terminal` ribbon.\n    2. Opens the default terminal if you have set up one. Otherwise, choose the desired profile.\n  - Context menu\n    1. Right-click on files, folders, or tab headers.\n    2. Choose the desired action \\(and profile\\).\n  - Command palette\n    1. Press `Ctrl`+`P` or click on the `Open command palette` ribbon next to the left window border.\n    2. Choose the desired action \\(and profile\\).\n  - Select profile modal\n    1. Choose the desired profile. Press `Ctrl` to edit the profile before use. The item `(Temporary profile)` starts a terminal with a temporary profile.\n- To save and restore integrated terminal history\n  1. Keep the terminal open when exiting Obsidian.\n  2. Terminal history will be restored next time Obsidian is opened.\n- To insert the path of a file or folder\n  1. Drag it onto an integrated terminal, from the vault or from another app such as Finder, Explorer or VS Code.\n  2. The path is escaped or quoted for the shell of the terminal's profile, and a notice says so when something could not be inserted.\n- Additional actions\n  - Includes\n    - Clear terminal: \\(1\\), \\(4\\)\n    - Copy terminal: \\(1\\)\n    - Edit terminal: \\(1\\)\n    - Export, import, or edit settings: \\(2\\), \\(3\\)\n    - Find in terminal: \\(1\\), \\(4\\)\n    - Open documentation: \\(2\\), \\(3\\)\n    - Restart terminal: \\(1\\)\n    - Save terminal history: \\(1\\)\n  - Available by\n    - \\(1\\) Right-click on tab header/`More options`\n    - \\(2\\) Open settings\n    - \\(3\\) Open command palette\n    - \\(4\\) Use keyboard shortcuts\n\n### Keyboard shortcuts\n\nThe keyboard shortcuts can be customized in hotkeys settings.\n\n#### Global\n\n- Toggle focus on last terminal: `Ctrl`+`Shift`+`` ` ``\n  - Focus on last terminal: \\(unbound; useful if you want separate keys for focus and unfocus\\)\n- Open root directory in terminal \\(integrated\\): `Ctrl`+`Shift`+`H`, `Command`+`Shift`+`H` \\(Apple\\)\n  - Another plugin may use the same keys. Obsidian then shows a conflict, which you can resolve under Settings → Hotkeys.\n\n#### Terminal is focused\n\nWhen a terminal is focused, other keyboard shortcuts \\(including Obsidian and plugin hotkeys\\) are disabled. Only the following keyboard shortcuts work. Thus you can ignore Obsidian complaining about conflicting keys for the following keyboard shortcuts.\n\nThis behavior can be turned off via the `Intercept keys when terminal is focused` setting; when disabled, Obsidian hotkeys keep working while the terminal has focus.\n\n- Clear terminal: `Ctrl`+`Shift`+`K`, `Command`+`Shift`+`K` \\(Apple\\)\n- Close terminal: `Ctrl`+`Shift`+`W`, `Command`+`Shift`+`W` \\(Apple\\)\n- Find in terminal: `Ctrl`+`Shift`+`F`, `Command`+`Shift`+`F` \\(Apple\\)\n- Toggle focus on last terminal: `Ctrl`+`Shift`+`` ` `` \\(same as above\\)\n  - Unfocus terminal: \\(unbound; useful if you want separate keys for focus and unfocus\\)\n- Open root directory or current directory in terminal \\(default, external, integrated, select\\) and open developer console: \\(unbound, except open root directory in terminal \\(integrated\\) above; a hotkey you assign also works here\\)\n  - A hotkey of one of these commands, the default above or one you assign, works everywhere in Obsidian. In a focused terminal it wins over a default shortcut of this list on the same keys, so do not ignore a conflict that Obsidian reports for it.\n  - The commands that open the current directory need an active file. In a focused terminal there is none, so a hotkey you assign to one of them shows a notice and does not reach the shell.\n\n### Theming\n\nTheming is possible. However, there is no user-friendly interface for now.\n\n1. Open the profile editing modal.\n2. Click on the `Edit` button labeled `Data`. It should open up a new modal in which there is a large textbox.\n3. Notice `terminalOptions` in the text area labeled `Data`. Refer to the [`xterm.js` documentation](https://github.com/xtermjs/xterm.js/blob/master/typings/xterm.d.ts#L26) (`ITerminalOptions`) to set the options. Nested objects may need to be used.\n   - You can also configure global defaults via the plugin settings page (see `Profile defaults`). Those options act as a fallback for every profile unless a profile explicitly overrides them.\n4. Save the profile. Changes should apply immediately.\n\n### Profiles\n\nThis plugin comes with several profile presets that you can reference.\n\nWhen setting up a terminal profile, you need to distinguish between shells and terminal emulators. (Search online if needed.) Generally, integrated profiles only work with shells while external ones only work with terminal emulators.\n\n#### Examples\n\n##### Shells\n\n- Bash: `bash --login`\n- Bourne shell: `sh`\n- Command Prompt: `cmd`\n- Dash: `dash`\n- Git Bash: `<Git installation>\\bin\\bash.exe --login` (e.g. `C:\\Program Files\\Git\\bin\\bash.exe`)\n- PowerShell Core: `pwsh`\n- Windows PowerShell: `powershell`\n- Windows Subsystem for Linux: `wsl` or `wsl -d <distribution name>`\n- Z shell: `zsh --login`\n\n##### Terminal emulators\n\n- Command Prompt: `cmd`\n- GNOME Terminal: `gnome-terminal`\n- Konsole: `konsole`\n- Terminal (macOS): `/System/Applications/Utilities/Terminal.app/Contents/macOS/Terminal \"$PWD\"`\n- Windows Terminal: `wt`\n- iTerm2: `/Applications/iTerm.app/Contents/MacOS/iTerm2 \"$PWD\"`\n- xterm: `xterm`\n\n### Program status on tabs\n\nTerminal tabs show the plugin's own icon at 21 px, larger than Obsidian's own tab icons. A tab in a sidebar keeps Obsidian's size. With `Program status` at `None` the icon is a rounded square, the same as on the `Open terminal` ribbon button. With `Still` or `Animated` it is a square with a raised border, which carries the status marks.\n\n`Program status`, in the `Interface` section of the plugin settings, shows on a terminal tab what the program in it reports with the escape sequence OSC 7501: idle, working, needs input, finished or error.\n\n- `None`: no status is shown and the reports are ignored.\n- `Still`: the tab icon gets a mark for the status. Nothing moves.\n- `Animated` (default): the same marks, and the working dots light up in turn, a changed tab title slides up from below, and a new finished, needs-input or error mark pops in. Nothing moves where the system asks for reduced motion. On Windows that is `Animation effects` turned off under `Settings` > `Accessibility` > `Visual effects`.\n\nA finished program stays marked until you look at its terminal. A program that does not send OSC 7501 shows no status. Inside tmux or screen, a report reaches the terminal only when passthrough is set up there. On Windows, a program that asks the terminal whether it understands the reports gets an answer only on Windows Terminal's console host, which ConPTY terminals use when Windows Terminal 1.22 or newer is installed and `Windows Terminal console host` is on (the default). On the console host built into Windows (tested on Windows 11 24H2) and on the ConHost backend it gets no answer, so a program that waits for that answer before it reports shows no status there. A program that was already running when you choose `Still` or `Animated` may report only after you restart it.\n\nThe setting is stored with the other plugin settings, so it follows the vault to every device that syncs them. A device that runs 3.28.0 or earlier drops the `tabStatus` setting when it saves its settings, so `Program status` goes back to `Animated`, the default.\n\n### Experimental features\n\nFeatures that are not finished are listed under `Experimental`, the last section of the plugin settings. The section is shown only when the installed version has such features.\n\n- Every experimental feature is off until you turn it on. An update never turns one on.\n- Each row says what the feature does, what the known risk is, and where to send feedback.\n- To try a feature, turn on its toggle. To stop, turn it off. The plugin then behaves as it did before, and nothing you stored is lost. A change applies at once unless the row says it needs new terminals or a restart.\n- An experimental feature may change or be removed in a later version. When one becomes a regular feature, its toggle leaves the section and the changelog says so.\n- The choice is stored with the other plugin settings, so it follows the vault to every device that syncs them. A device that still runs an older version turns the feature off again and resets its options when it saves its settings, because that version drops settings it does not know.\n\n### Miscellaneous\n\nThis plugin patches `require` so that `require(\"obsidian\")` and other Obsidian modules work in the developer console. It is toggleable as `Expose internal modules` in settings.\n\nIn the developer console, a context variable `$$` is passed into the code, which can be used to dynamically change terminal options.\n\nThe full API is available from [`src/@types/obsidian-terminal.ts`](src/%40types/obsidian-terminal.ts).\n\n### Troubleshooting\n\n- Is the plugin useful on mobile?\n  - Compared to on desktop, it is much less useful. The only use for it for now is opening a developer console on mobile.\n- Why do hotkeys not work?\n  - If the terminal is in focus, all Obsidian hotkeys are disabled so that you can type special characters into the terminal. You can unfocus the terminal by pressing `Ctrl`+`Shift`+`` ` ``, then you can use Obsidian hotkeys again. Alternatively, disable the `Intercept keys when terminal is focused` setting to keep Obsidian hotkeys working while the terminal has focus.\n\n## Contributing\n\nContributions are welcome!\n\n### Changesets\n\nThis project uses [`changesets`](https://github.com/changesets/changesets) to manage the changelog. When creating a pull request, please [add a changeset](https://github.com/changesets/changesets/blob/main/docs/intro-to-using-changesets.md#adding-changesets) describing the changes. Add multiple changesets if your pull request changes several things. End each changeset with `([PR number](PR link) by [author username](author link))`. For example, the newly created file under the directory `.changeset` should look like:\n\n```Markdown\n---\n\"example\": patch\n---\n\nThis is an example change. ([GH#1](https://github.com/ghost/example/pull/1) by [@ghost](https://github.com/ghost))\n```\n\n### Checks, formatting, and hooks\n\n`package.json` defines the executable workflow:\n\n- `bun run check` runs TypeScript, ESLint, markdownlint, Prettier, Ruff, and Ty checks.\n- `bun run format` applies ESLint, markdownlint, Prettier, and Ruff fixes, then runs Ty.\n- `bun run build` runs `bun run check`, then creates the production bundle.\n- `bun run build:dev` starts the development watcher without running the checks.\n- `bun run commitlint` checks commits from `origin/main` through `HEAD`.\n\nPrek manages the Git hooks in `prek.toml`. The pre-commit hooks format supported files. The commit-message hook runs commitlint. The pre-push hook runs the full test suite.\n\nTo set up locally:\n\n1. Install Bun and uv.\n2. Run `bun install` to install JavaScript dependencies and Prek hooks.\n3. Run `uv sync --locked` to install the locked Python environment.\n\nUse these scoped commands when one check needs attention:\n\n- `bun run check:tsc` — TypeScript type check\n- `bun run check:eslint` — TypeScript and JavaScript lint\n- `bun run check:md` — Markdown lint\n- `bun run check:prettier` — Prettier check\n- `bun run check:py` — Ruff formatting, Ruff lint, and Ty checks\n- `bun run format:eslint` — ESLint fixes\n- `bun run format:md` — Markdown fixes\n- `bun run format:prettier` — Prettier fixes\n- `bun run format:py` — Ruff fixes and Ty check\n\nConfiguration files:\n\n- `eslint.config.mjs` — ESLint rules\n- `.prettierrc.mjs` — Prettier rules\n- `.prettierignore` — Prettier ignore patterns\n- `.markdownlint.jsonc` — markdownlint rules\n- `.markdownlint-cli2.mjs` — markdownlint file selection\n- `.commitlintrc.mjs` — commitlint config\n- `prek.toml` — Git hooks\n\n### Testing\n\nThis repository uses Pytest for Python tests and Vitest for TypeScript and JavaScript tests.\n\n- Run every non-interactive test with coverage: `bun run test`.\n- Run only Python tests: `bun run test:py`.\n- Run only Vitest tests: `bun run test:vitest`.\n- Run Vitest interactively: `bun run test:watch`.\n- The Prek pre-push hook runs `bun run test` and blocks a push when a test fails.\n\nSee `vitest.config.mts` for minimal config and further instructions.\n\n### Windows backend tests\n\nThe ConPTY host and ConHost resizer tests run on native Windows only. See\n[Windows backend tests](AGENTS.md#windows-backend-tests).\n\n### Todos\n\nThe todos here, ordered alphabetically, are things planned for the plugin. There are no guarantees that they will be completed. However, we are likely to accept contributions for them.\n\n- Connect to remote shells.\n- Detect sandboxed environment and notify users.\n- External link confirmation.\n- Filter console log by severity in the developer console.\n- Indicate that the terminal resizer has crashed or is disabled.\n- Shared terminal tabs.\n- Vim mode switch.\n\n### Translating\n\nSee [`assets/locales/README.md`](assets/locales/README.md).\n\n## Security\n\nWe hope that there will never be any security vulnerabilities, but unfortunately it does happen. Please [report](#reporting-a-vulnerability) them!\n\n### System access\n\nObsidian's [community Scorecard][community plugin scorecard] flags the plugin for reading system information and for using Node.js `fs`. A terminal cannot work without them:\n\n- **Environment variables.** Terminals inherit Obsidian's environment, such as `HOME` and `PATH`. The plugin removes variables left by the terminal or editor Obsidian was started from (such as `TMUX` and `VSCODE_*`) and, for integrated terminals, sets `TERM`, `COLORTERM`, `TERM_PROGRAM`, `TERM_PROGRAM_VERSION`, and `PYTHONIOENCODING`. Your profile's variables are applied last. The environment goes only to the processes the plugin starts.\n- **System `PATH` and Windows version.** Obsidian started from a desktop launcher often has a short `PATH`. To find shells and Python, the plugin adds the system `PATH`: from `/usr/libexec/path_helper` on macOS, `/etc/environment` or `getconf PATH` on Linux, and the registry on Windows. On Windows, it also reads the OS build number, which tells the terminal display how ConPTY wraps lines.\n- **Files outside the vault.** The plugin runs the shells, terminal emulators, and Python interpreters named in your profiles or settings. On Windows, when no configured Python executable works, it tries `python`, `python3`, and the `py` launcher (run with `-3`) from `PATH`. On Windows, it writes the ConPTY host script (`obsidian-terminal-conpty-*.py`) to the system temporary folder and keeps it for later sessions. With the ConHost backend, it also writes a `.bat` file holding the command line to that folder and deletes that file when the terminal exits. With the Windows Terminal console host setting on (the default), the ConPTY host script asks Windows where the installed Windows Terminal packages are, through the documented package API (`GetPackagesByPackageFamily` and `GetPackagePathByFullName`), and starts the `OpenConsole.exe` it finds there. Windows does not let other programs start files inside Windows Terminal's install folder, so the script copies that `OpenConsole.exe` to `%LOCALAPPDATA%\\obsidian-terminal\\console-host` and starts the copy. When a drop on a terminal names files by URI, as a drag out of VS Code does, it asks the file system whether each path is a file or a folder before it inserts the path. It does not read the files.\n\n### Supported versions\n\n| Version  | Supported |\n| -------- | --------- |\n| rolling  | ✅        |\n| latest   | ✅        |\n| outdated | ❌        |\n\n### Reporting a vulnerability\n\nPlease report a vulnerability by opening a [private vulnerability report][new security advisory]. We will get back to you as soon as possible.\n\n## Credits\n\nThe idle mark on terminal tabs is the moon of Phosphor Icons (MIT License, Copyright (c) 2023 Phosphor Icons).\n\n[Buy Me a Coffee]: https://buymeacoffee.com/polyipseity\n[Buy Me a Coffee/embed]: https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=polyipseity&button_colour=40DCA5&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00\n[changelog]: https://github.com/polyipseity/obsidian-terminal/blob/main/CHANGELOG.md\n[community plugin]: https://obsidian.md/plugins?id=terminal\n[community plugin scorecard]: https://community.obsidian.md/plugins/terminal#scorecard\n[latest release]: https://github.com/polyipseity/obsidian-terminal/releases/latest\n[new security advisory]: https://github.com/polyipseity/obsidian-terminal/security/advisories/new\n[Obsidian]: https://obsidian.md/\n[Python]: https://python.org/downloads/\n[related]: https://github.com/polyipseity/obsidian-monorepo\n[repository]: https://github.com/polyipseity/obsidian-terminal\n[trailer]: https://raw.githubusercontent.com/polyipseity/obsidian-terminal/main/assets/trailer.png\n",
+                      "displayTextI18nKey": "translation:generic.documentations.readme",
+                      "iconI18nKey": "asset:generic.documentations.readme-icon"
+                    }
+                  },
+                  "icon": "file-question",
+                  "title": "Readme"
+                }
+              },
+              {
+                "id": "45479769057f7b97",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "ChessVault/CLAUDE.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "CLAUDE"
+                }
+              }
+            ],
+            "currentTab": 2
+          },
+          {
+            "id": "180129cf5dc61c5a",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "a0652d47df2f99d4",
+                "type": "leaf",
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "C:\\Users\\hohol\\Downloads\\ChessVault",
+                      "focus": false,
+                      "profile": {
+                        "args": [],
+                        "environment": [],
+                        "executable": "C:\\Windows\\System32\\cmd.exe",
+                        "followTheme": true,
+                        "name": "",
+                        "platforms": {
+                          "win32": true
+                        },
+                        "pythonExecutable": "",
+                        "restoreHistory": false,
+                        "rightClickAction": "copyPaste",
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "win32Backend": "conpty"
+                      },
+                      "profileSourceId": "win32IntegratedDefault",
+                      "serial": null,
+                      "userTitle": ""
+                    }
+                  },
+                  "icon": "terminal:tab-bezel",
+                  "title": "Claude Code"
+                }
+              },
+              {
+                "id": "335058e82d421665",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "C:\\Users\\hohol\\Downloads\\ChessVault",
+                      "focus": false,
+                      "profile": {
+                        "args": [],
+                        "environment": [],
+                        "executable": "C:\\Windows\\System32\\cmd.exe",
+                        "followTheme": true,
+                        "name": "",
+                        "platforms": {
+                          "win32": true
+                        },
+                        "pythonExecutable": "",
+                        "restoreHistory": false,
+                        "rightClickAction": "copyPaste",
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "win32Backend": "conpty"
+                      },
+                      "profileSourceId": "win32IntegratedDefault",
+                      "serial": null,
+                      "userTitle": ""
+                    }
+                  },
+                  "pinned": true,
+                  "icon": "terminal:tab-bezel",
+                  "title": "cmd"
+                }
+              },
+              {
+                "id": "0c5214dbe090fba3",
+                "type": "leaf",
+                "state": {
+                  "type": "empty",
+                  "state": {},
+                  "icon": "lucide-file",
+                  "title": "Новая вкладка"
+                }
+              }
+            ],
+            "currentTab": 1
+          }
+        ],
+        "direction": "horizontal"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "27498c548b2f03a7",
+    "type": "split",
+    "children": [
+      {
+        "id": "324d00868701f2ca",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a5499a09b1b20ad3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "b10fd567eb68317a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "2d45d8bbb7316cbf",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4a68e653a9ad6d5a",
+    "type": "split",
+    "children": [
+      {
+        "id": "78af000fd1459641",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ad04b4fa1ce4c473",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки"
+            }
+          },
+          {
+            "id": "96ac1d5ec1e396d6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки"
+            }
+          },
+          {
+            "id": "5ba246e0e32b820e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "35767613f64d7da8",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "e65fced9f06f85c2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false,
+      "terminal:Open terminal": false
+    }
+  },
+  "active": "335058e82d421665",
+  "lastOpenFiles": [
+    "ChessVault/CLAUDE.md",
+    "ChessVault/Claude-Prompts.md",
+    "ChessVault/Plan.md",
+    "ChessVault/README.md"
+  ]
+}

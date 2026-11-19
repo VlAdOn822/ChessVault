@@ -1,0 +1,2797 @@
+/* Caissa plugin styles */
+
+.chess-study-block {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin: 0.75rem 0;
+	color: var(--text-normal);
+	/* Lets us use container queries against the writing pane width
+	   rather than the full viewport — important for split-pane editing. */
+	container-type: inline-size;
+	container-name: chess-block;
+}
+
+.chess-study-title {
+	font-size: 1.05em;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+}
+
+.chess-study-title-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.chess-study-title-row .chess-study-title {
+	flex: 1;
+	min-width: 0;
+}
+
+.chess-study-title-row .chess-study-opening-guide-link {
+	margin-top: 0;
+	flex-shrink: 0;
+}
+
+.chess-study-description {
+	font-size: 0.9em;
+	color: var(--text-muted);
+	line-height: 1.55;
+}
+
+/* Reading themes clamp preview paragraphs; outrank those rules without !important. */
+.markdown-preview-view .chess-study-block .chess-study-description,
+.markdown-rendered .chess-study-block .chess-study-description {
+	max-height: none;
+	overflow: visible;
+}
+
+.markdown-preview-view .chess-study-block .chess-study-description p,
+.markdown-preview-view .chess-study-block .chess-study-description .markdown-preview-p,
+.markdown-rendered .chess-study-block .chess-study-description p {
+	margin: 0 0 0.65em 0;
+	display: block;
+	max-height: none;
+	overflow: visible;
+	line-clamp: unset;
+	-webkit-line-clamp: unset;
+	text-overflow: unset;
+	white-space: normal;
+}
+
+.chess-study-description p:last-of-type {
+	margin-bottom: 0;
+}
+
+.chess-study-opening-guide-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.85rem;
+	height: 1.85rem;
+	margin-top: 0.35rem;
+	border-radius: 4px;
+	color: var(--text-muted);
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.chess-study-opening-guide-link:hover {
+	color: var(--text-accent);
+	background: var(--background-modifier-hover);
+}
+
+.chess-study-opening-guide-link svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+/* --- Game header (PGN headers strip) ----------------------------------- */
+
+.chess-study-game-header {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+	padding: 0.4rem 0.6rem;
+	border-radius: 4px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.chess-study-players {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	font-size: 0.95em;
+	font-weight: 600;
+}
+
+.chess-study-player {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.3rem;
+}
+
+.chess-study-player-dot {
+	display: inline-block;
+	width: 0.65rem;
+	height: 0.65rem;
+	border-radius: 50%;
+	border: 1px solid var(--background-modifier-border);
+	transform: translateY(0.05rem);
+}
+
+.chess-study-player-white .chess-study-player-dot {
+	background: #f4f4f4;
+}
+.chess-study-player-black .chess-study-player-dot {
+	background: #2a2a2a;
+}
+
+.chess-study-player-title {
+	font-size: 0.78em;
+	font-weight: 700;
+	color: var(--text-accent);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.chess-study-player-elo {
+	font-weight: 400;
+	font-size: 0.85em;
+	color: var(--text-muted);
+}
+
+.chess-study-versus {
+	font-weight: 400;
+	color: var(--text-muted);
+	font-size: 0.85em;
+}
+
+.chess-study-result {
+	margin-left: auto;
+	font-variant-numeric: tabular-nums;
+	font-weight: 700;
+	color: var(--text-normal);
+}
+
+.chess-study-game-meta {
+	font-size: 0.85em;
+	color: var(--text-muted);
+}
+
+/* --- Inline category/opening/endgame/WCC picker ------------------------ */
+
+.chess-study-inline-picker-wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	padding: 0.5rem 0.6rem;
+	border-radius: 4px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.chess-study-inline-picker {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.chess-study-inline-picker-subrows,
+.chess-study-inline-picker-gamerow-wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.chess-study-inline-picker-subrows:empty,
+.chess-study-inline-picker-gamerow-wrap:empty {
+	display: none;
+}
+
+.chess-study-inline-picker-row {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.chess-study-inline-picker-hint {
+	font-size: 0.85em;
+	color: var(--text-muted);
+	line-height: 1.45;
+}
+
+.chess-study-inline-picker-label {
+	flex: 0 0 auto;
+	font-size: 0.85em;
+	font-weight: 600;
+	color: var(--text-muted);
+	min-width: 5.5rem;
+}
+
+.chess-study-inline-picker-select {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 0.35rem 0.45rem;
+	line-height: 1.35;
+	background: var(--background-primary);
+	color: var(--text-normal);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	font-size: 0.9em;
+}
+
+/* --- Loading indicator (async game fetch) ------------------------------ */
+
+.chess-study-loading {
+	padding: 0.5rem 0.75rem;
+	border-radius: 4px;
+	background: var(--background-secondary);
+	color: var(--text-muted);
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+/* --- Layout ------------------------------------------------------------ */
+
+.chess-study-layout {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	outline: none;
+	border-radius: 4px;
+}
+
+/* Soft focus ring so users know keyboard shortcuts (←/→, Home/End, F)
+   are active. Only visible when focused via keyboard or after clicking. */
+.chess-study-layout:focus-visible {
+	box-shadow: 0 0 0 2px var(--interactive-accent);
+}
+
+/* Board grows with the pane; move list stays a narrow band (mono columns). */
+.chess-study-layout.size-small .chess-study-board-moves-row {
+	grid-template: auto / minmax(0, 1fr) minmax(8rem, 10.25rem);
+}
+
+.chess-study-layout.size-medium .chess-study-board-moves-row {
+	grid-template: auto / minmax(0, 1fr) minmax(9rem, 11.25rem);
+}
+
+.chess-study-layout.size-large .chess-study-board-moves-row {
+	grid-template: auto / minmax(0, 1fr) minmax(9.75rem, 12.5rem);
+}
+
+.chess-study-layout.size-small > .chess-study-analysis-wrap {
+	max-width: 240px;
+}
+.chess-study-layout.size-medium > .chess-study-analysis-wrap {
+	max-width: 360px;
+}
+.chess-study-layout.size-large > .chess-study-analysis-wrap {
+	max-width: 500px;
+}
+
+/* `size: full` always stacks (board full-width, moves below). */
+.chess-study-layout.size-full .chess-study-board-moves-row {
+	grid-template: auto / 1fr;
+	justify-items: stretch;
+}
+.chess-study-layout.size-full .chess-study-board-stack,
+.chess-study-layout.size-full .chess-study-controls,
+.chess-study-layout.size-full > .chess-study-analysis-wrap {
+	max-width: none;
+}
+.chess-study-layout.size-full .chess-study-controls {
+	align-self: stretch;
+}
+
+/* No moves panel — board takes the full row regardless of size, but caps
+   stay in place so a non-`full` board doesn't suddenly stretch. With nothing
+   to the right of the board, center the board stack (and controls) within the
+   available width instead of letting it left-align awkwardly. */
+.chess-study-layout.no-moves .chess-study-board-moves-row {
+	grid-template: auto / 1fr;
+	justify-items: center;
+}
+.chess-study-layout.no-moves .chess-study-board-stack,
+.chess-study-layout.no-moves .chess-study-controls,
+.chess-study-layout.no-moves > .chess-study-analysis-wrap {
+	width: 100%;
+}
+.chess-study-layout.no-moves > .chess-study-analysis-wrap,
+.chess-study-layout.no-moves .chess-study-controls {
+	align-self: center;
+}
+
+.chess-study-layout.no-moves.size-small .chess-study-board-wrap {
+	max-width: 240px;
+	width: 100%;
+}
+.chess-study-layout.no-moves.size-medium .chess-study-board-wrap {
+	max-width: 360px;
+	width: 100%;
+}
+.chess-study-layout.no-moves.size-large .chess-study-board-wrap {
+	max-width: 500px;
+	width: 100%;
+}
+
+/* Branching timeline: board fills the block width (same as size:full),
+   timeline sits full-width underneath. Ignore small/medium/large caps. */
+.chess-study-layout.has-timeline.timeline-only .chess-study-board-moves-row {
+	grid-template: auto / 1fr;
+	justify-items: stretch;
+}
+.chess-study-layout.has-timeline.timeline-only .chess-study-board-stack,
+.chess-study-layout.has-timeline.timeline-only .chess-study-board-col,
+.chess-study-layout.has-timeline.timeline-only .chess-study-board-wrap,
+.chess-study-layout.has-timeline.timeline-only .chess-study-controls {
+	max-width: none;
+	width: 100%;
+	align-self: stretch;
+}
+.chess-study-layout.has-timeline .chess-study-timeline-wrap {
+	width: 100%;
+}
+
+/* Container-query collapse: when the writing area is narrow, every size
+   except the already-stacked `full`/`no-moves` collapses to a single column
+   (board on top, moves below) — this is the phone/narrow-pane behavior. */
+@container chess-block (max-width: 520px) {
+	.chess-study-layout.size-small .chess-study-board-moves-row,
+	.chess-study-layout.size-medium .chess-study-board-moves-row,
+	.chess-study-layout.size-large .chess-study-board-moves-row {
+		grid-template: auto / 1fr;
+		justify-items: stretch;
+	}
+	.chess-study-layout.size-small .chess-study-controls,
+	.chess-study-layout.size-small > .chess-study-analysis-wrap,
+	.chess-study-layout.size-medium .chess-study-controls,
+	.chess-study-layout.size-medium > .chess-study-analysis-wrap,
+	.chess-study-layout.size-large .chess-study-controls,
+	.chess-study-layout.size-large > .chess-study-analysis-wrap {
+		max-width: none;
+	}
+	.chess-study-layout.size-small .chess-study-controls,
+	.chess-study-layout.size-medium .chess-study-controls,
+	.chess-study-layout.size-large .chess-study-controls {
+		align-self: stretch;
+	}
+}
+
+/* --- Board stack: trays outside the board+moves row -------------------- */
+
+.chess-study-board-moves-row {
+	display: grid;
+	align-items: start;
+	gap: 1rem;
+	min-width: 0;
+	width: 100%;
+}
+
+.chess-study-board-col {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	align-items: stretch;
+	min-width: 0;
+	width: 100%;
+}
+
+.chess-study-board-stack {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	flex: 0 1 auto;
+	min-width: 0;
+	width: 100%;
+}
+
+.chess-study-board-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+	background: var(--background-secondary);
+	line-height: 0;
+}
+
+.chess-study-board-host {
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.chess-study-board-host ::selection {
+	background: transparent;
+}
+
+.chess-study-board {
+	display: block;
+	width: 100%;
+	height: 100%;
+	flex: 0 0 auto;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+/* Rank/file labels: no stroke halo, not selectable (avoids drag-selection box). */
+.chess-study-board text.chess-study-board-coord {
+	stroke: none;
+	paint-order: fill;
+}
+
+/* --- Captured pieces trays + material balance -------------------------- */
+
+.chess-study-captured-wrap {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.35rem 0.5rem;
+	min-height: 1.4rem;
+	padding: 0.2rem 0.2rem;
+	font-size: 0.85em;
+}
+
+.chess-study-captured-wrap.is-hidden {
+	display: none;
+}
+
+.chess-study-captured-group {
+	display: inline-flex;
+	align-items: center;
+}
+
+/* Stack same-piece copies tightly so a 7-pawn capture doesn't take half
+   the board's width. The negative margin overlaps neighbors slightly. */
+.chess-study-captured-group .chess-study-captured-piece + .chess-study-captured-piece {
+	margin-left: -0.32em;
+}
+
+.chess-study-captured-piece {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.2em;
+	height: 1.2em;
+	line-height: 1;
+}
+
+.chess-study-captured-svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.chess-study-captured-glyph {
+	font-size: 1.2em;
+	line-height: 1;
+}
+
+/* Black pieces are fill="#000" — invisible on dark themes without a halo. */
+.theme-dark .chess-study-captured-piece.is-black .chess-study-captured-svg,
+.theme-dark .chess-study-captured-piece.is-black.chess-study-captured-glyph {
+	filter: drop-shadow(0 0 0.55px var(--background-primary))
+		drop-shadow(0 0 0.55px var(--background-primary))
+		drop-shadow(0 0 0.9px rgba(255, 255, 255, 0.75));
+}
+
+.chess-study-captured-adv {
+	margin-left: 0.5em;
+	font-weight: 600;
+	color: var(--text-muted);
+}
+
+/* --- Controls ---------------------------------------------------------- */
+
+.chess-study-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	width: 100%;
+}
+
+.chess-study-control {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
+	line-height: 1;
+	border-radius: 4px;
+	background: var(--background-secondary);
+	color: var(--text-normal);
+	border: 1px solid var(--background-modifier-border);
+	cursor: pointer;
+}
+
+.chess-study-control:hover:not([disabled]) {
+	background: var(--background-modifier-hover);
+}
+
+.chess-study-control[disabled] {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.chess-study-control-spacer {
+	flex: 1;
+}
+
+/* --- Move list --------------------------------------------------------- */
+
+.chess-study-side-col {
+	min-width: 0;
+	min-height: 0;
+	/* max-height is set in JS from the board column so short lists stay
+	   compact and long lists scroll instead of growing past the board. */
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	overflow: hidden;
+	align-self: start;
+	width: 100%;
+}
+
+.chess-study-side-col > .chess-study-analysis-wrap {
+	flex: 0 0 auto;
+	margin-top: 0;
+	min-height: 0;
+}
+
+.chess-study-moves-wrap {
+	flex: 1 1 auto;
+	min-height: 0;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	padding: 0.5rem 0.75rem;
+	overflow-x: hidden;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.chess-study-moves {
+	display: block;
+	font-family: var(--font-monospace, monospace);
+	font-size: 0.9em;
+	line-height: 1.6;
+}
+
+.chess-study-move-row {
+	display: grid;
+	grid-template: auto / 1.35rem 1fr 1fr;
+	gap: 0.2rem;
+	align-items: stretch;
+}
+
+.chess-study-moves-empty {
+	margin-top: 0.25rem;
+	padding: 0.4rem 0.5rem;
+	color: var(--text-muted);
+	font-style: italic;
+	font-size: 0.85em;
+}
+
+.chess-study-move-row.header {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	align-items: center;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--text-muted);
+	background: var(--background-secondary);
+	border-bottom: 1px solid var(--background-modifier-border);
+	margin-bottom: 0.25rem;
+	padding-bottom: 0.15rem;
+}
+
+.chess-study-move-row.header .chess-study-move-cell {
+	cursor: default;
+	background: transparent;
+}
+
+.chess-study-move-cell.header.header-king {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.12rem 0.28rem;
+	min-height: 1.65em;
+	text-transform: none;
+}
+
+.chess-study-move-row.header .chess-study-move-cell.header-king.header-king-to-move {
+	background: var(--background-modifier-hover);
+	box-shadow: inset 0 0 0 2px var(--interactive-accent);
+	border-radius: 5px;
+	color: var(--text-normal);
+}
+
+.chess-study-move-header-king-svg {
+	width: 1.52em;
+	height: 1.52em;
+	display: block;
+	flex-shrink: 0;
+}
+
+.chess-study-move-header-king-glyph {
+	font-size: 1.42em;
+	line-height: 1;
+}
+
+.chess-study-move-num {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	color: var(--text-muted);
+	text-align: right;
+	padding-right: 0.25rem;
+	font-variant-numeric: tabular-nums;
+}
+
+.chess-study-move-cell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	padding: 0.25rem 0.35rem;
+	border-radius: 3px;
+	transition: background-color 0.1s ease;
+	min-height: 1.65em;
+	text-align: center;
+}
+
+.chess-study-move-cell:hover {
+	background: var(--background-modifier-hover);
+}
+
+.chess-study-move-cell.active {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	font-weight: 600;
+}
+
+.chess-study-move-cell.empty {
+	cursor: default;
+	color: transparent;
+	pointer-events: none;
+}
+
+/* --- Errors ------------------------------------------------------------ */
+
+.chess-study-error {
+	margin-top: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 4px;
+	background: var(--background-modifier-error);
+	color: var(--text-error);
+	font-family: var(--font-monospace, monospace);
+	font-size: 0.85em;
+}
+
+/* --- Lines (opening explorer) panel ----------------------------------- */
+
+.chess-study-lines-wrap {
+	margin-top: 0.5rem;
+	padding: 0.75rem 1rem;
+	border-radius: 6px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.chess-study-lines-header {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.chess-study-lines-title {
+	font-weight: 700;
+	font-size: 1.1em;
+	color: var(--text-accent);
+	letter-spacing: 0.02em;
+}
+
+.chess-study-lines-meta {
+	font-size: 0.8em;
+	color: var(--text-muted);
+	margin-bottom: 0.5rem;
+}
+
+.chess-study-lines-status {
+	font-size: 0.9em;
+	color: var(--text-muted);
+	font-style: italic;
+	padding: 0.25rem 0;
+}
+
+.chess-study-lines-status.error {
+	color: var(--text-error);
+	font-style: normal;
+}
+
+.chess-study-lines-table {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+}
+
+.chess-study-lines-row {
+	display: grid;
+	grid-template: auto / 5rem 1fr;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.chess-study-lines-label {
+	font-family: var(--font-monospace, monospace);
+	font-size: 0.95em;
+	font-weight: 600;
+	color: var(--text-accent);
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+.chess-study-lines-bar {
+	display: flex;
+	width: 100%;
+	height: 1.6rem;
+	border-radius: 3px;
+	overflow: hidden;
+	background: var(--background-primary);
+}
+
+.chess-study-lines-seg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 0;
+	overflow: hidden;
+	transition: width 0.15s ease;
+}
+
+.chess-study-lines-seg.seg-white {
+	background: #2e8b3a;
+	color: #ffffff;
+}
+
+.chess-study-lines-seg.seg-draws {
+	background: #a8a8a8;
+	color: #1a1a1a;
+}
+
+.chess-study-lines-seg.seg-black {
+	background: #d6383b;
+	color: #ffffff;
+}
+
+.chess-study-lines-seg-label {
+	font-size: 0.78em;
+	font-weight: 600;
+	white-space: nowrap;
+	padding: 0 0.25rem;
+}
+
+/* --- Openings quiz modal ---------------------------------------------- */
+
+.chess-study-quiz-modal {
+	max-width: 460px;
+}
+
+.chess-study-quiz-help {
+	font-size: 0.9em;
+	color: var(--text-muted);
+	margin-bottom: 0.8rem;
+}
+
+.chess-study-quiz-score {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-weight: 600;
+	margin-bottom: 0.6rem;
+}
+
+.chess-study-quiz-streak {
+	color: var(--text-muted);
+	font-weight: 400;
+}
+
+.chess-study-quiz-board {
+	width: 320px;
+	max-width: 100%;
+	aspect-ratio: 1 / 1;
+	margin: 0 auto 0.75rem;
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+	background: var(--background-secondary);
+}
+
+.chess-study-quiz-board svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.chess-study-quiz-prompt {
+	font-size: 0.95em;
+	margin-bottom: 0.5rem;
+	text-align: center;
+}
+
+.chess-study-quiz-side {
+	font-weight: 600;
+}
+
+.chess-study-quiz-mystery {
+	color: var(--text-muted);
+}
+
+.chess-study-quiz-input-row {
+	display: flex;
+	gap: 0.4rem;
+	align-items: center;
+	margin-bottom: 0.6rem;
+}
+
+.chess-study-quiz-input-row .is-hidden {
+	display: none;
+}
+
+.chess-study-quiz-input {
+	flex: 1;
+	padding: 0.4rem 0.6rem;
+	font-family: var(--font-monospace, monospace);
+	font-size: 0.95em;
+	border-radius: 4px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-primary);
+	color: var(--text-normal);
+}
+
+.chess-study-quiz-input:focus {
+	outline: 2px solid var(--interactive-accent);
+	outline-offset: -1px;
+}
+
+.chess-study-quiz-feedback {
+	min-height: 1.4em;
+	font-weight: 500;
+}
+
+.chess-study-quiz-feedback.is-correct {
+	color: var(--text-success, #2e8b3a);
+}
+
+.chess-study-quiz-feedback.is-incorrect {
+	color: var(--text-error, #d6383b);
+}
+
+.chess-study-quiz-reveal {
+	font-size: 0.85em;
+	color: var(--text-muted);
+	margin-top: 0.2rem;
+}
+
+/* --- Engine analysis panel + eval graph -------------------------------- */
+
+.chess-study-analysis-wrap {
+	margin-top: 0.5rem;
+}
+
+.chess-study-analysis {
+	display: grid;
+	grid-template: auto / 24px 1fr;
+	gap: 0.5rem;
+	padding: 0.4rem;
+	border-radius: 4px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.chess-study-eval-bar {
+	position: relative;
+	width: 24px;
+	height: 100%;
+	min-height: 80px;
+	border-radius: 3px;
+	overflow: hidden;
+	background: #2a2a2a;
+}
+
+.chess-study-eval-fill {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.chess-study-eval-fill.is-white {
+	bottom: 0;
+	background: #f1f1f1;
+}
+
+.chess-study-eval-fill.is-black {
+	top: 0;
+	background: #2a2a2a;
+}
+
+.chess-study-eval-label {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 50%;
+	transform: translateY(50%);
+	text-align: center;
+	font-size: 0.7em;
+	font-weight: 600;
+	color: var(--text-on-accent, #ffffff);
+	mix-blend-mode: difference;
+	pointer-events: none;
+}
+
+.chess-study-engine-lines {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	min-width: 0;
+	font-family: var(--font-monospace, monospace);
+	font-size: 0.85em;
+}
+
+.chess-study-engine-loading,
+.chess-study-engine-empty,
+.chess-study-engine-error {
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+.chess-study-engine-error {
+	color: var(--text-error, #d6383b);
+}
+
+.chess-study-engine-line {
+	display: grid;
+	grid-template: auto / 4ch 3ch 1fr;
+	gap: 0.4rem;
+	align-items: baseline;
+	min-width: 0;
+}
+
+.chess-study-engine-eval {
+	font-weight: 600;
+	color: var(--text-accent);
+	text-align: right;
+}
+
+.chess-study-engine-depth {
+	color: var(--text-muted);
+	font-size: 0.85em;
+}
+
+.chess-study-engine-pv {
+	color: var(--text-normal);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Eval graph */
+
+.chess-study-eval-graph-wrap {
+	margin-top: 0.5rem;
+}
+
+.chess-study-eval-graph {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	padding: 0.4rem;
+	border-radius: 4px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.chess-study-eval-graph-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.chess-study-eval-graph-title {
+	font-weight: 600;
+	font-size: 0.9em;
+}
+
+.chess-study-eval-graph-btn {
+	padding: 0.2rem 0.6rem;
+	font-size: 0.85em;
+	border-radius: 3px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--interactive-normal);
+	color: var(--text-normal);
+	cursor: pointer;
+}
+
+.chess-study-eval-graph-btn:hover:not([disabled]) {
+	background: var(--interactive-hover);
+}
+
+.chess-study-eval-graph-btn[disabled] {
+	opacity: 0.6;
+	cursor: progress;
+}
+
+.chess-study-eval-graph-status {
+	font-size: 0.8em;
+	color: var(--text-muted);
+}
+
+.chess-study-eval-graph-canvas {
+	width: 100%;
+	height: 80px;
+}
+
+.chess-study-eval-graph-svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+	cursor: crosshair;
+	border-radius: 3px;
+}
+
+/* --- Play vs Stockfish ------------------------------------------------- */
+
+.chess-study-play-status {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 1.5em;
+	padding: 0.2rem 0;
+	font-size: 0.95em;
+}
+
+.chess-study-play-status-text {
+	font-weight: 500;
+	color: var(--text-normal);
+}
+
+.chess-study-play-status-text.is-thinking {
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+.chess-study-play-status-text.is-gameover {
+	color: var(--text-accent);
+	font-weight: 600;
+}
+
+.chess-study-play-controls {
+	gap: 0.4rem;
+}
+
+/* Make the board cursor signal that it's clickable in play mode. */
+.chess-study-board.is-clickable {
+	cursor: pointer;
+}
+
+.chess-study-board-target {
+	cursor: pointer;
+}
+
+/* --- Promotion picker modal ------------------------------------------- */
+
+.chess-study-promotion-modal .modal-content {
+	min-width: 0;
+}
+
+.chess-study-promotion-row {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+	padding: 0.5rem 0;
+}
+
+.chess-study-promotion-choice {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+	padding: 4px;
+	border-radius: 6px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-secondary);
+	cursor: pointer;
+}
+
+.chess-study-promotion-choice:hover {
+	background: var(--interactive-hover);
+}
+
+.chess-study-promotion-svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.chess-study-export-modal .modal-content,
+.chess-study-paste-modal-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6em;
+}
+
+.chess-study-export-modal-hint,
+.chess-study-paste-modal-hint {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 0.9em;
+}
+
+.chess-study-export-modal-preview,
+.chess-study-paste-modal-field textarea {
+	width: 100%;
+	min-height: 8em;
+	font-family: var(--font-monospace);
+	font-size: 0.85em;
+	resize: vertical;
+}
+
+/* --- Branching timeline (Loki-style rows) ------------------------------- */
+
+.chess-study-timeline-wrap {
+	margin-top: 0.15rem;
+	width: 100%;
+	min-width: 0;
+}
+
+.chess-study-timeline {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	background:
+		radial-gradient(
+			120% 80% at 10% 0%,
+			color-mix(in srgb, var(--interactive-accent) 14%, transparent),
+			transparent 55%
+		),
+		var(--background-secondary);
+	padding: 0.65rem 0.75rem 0.8rem;
+}
+
+.chess-study-timeline-scroll {
+	overflow-x: auto;
+	overflow-y: hidden;
+	overscroll-behavior-x: contain;
+}
+
+.chess-study-timeline-canvas {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+	/* Label column (~8rem) + full-move cells */
+	min-width: max(
+		100%,
+		calc(8rem + var(--timeline-moves, 6) * 5.5rem)
+	);
+	padding: 0.1rem 0.15rem 0.2rem;
+}
+
+.chess-study-timeline-track {
+	display: grid;
+	grid-template: auto / minmax(6.5rem, 8rem) minmax(0, 1fr);
+	gap: 0.45rem;
+	align-items: center;
+	min-width: 0;
+}
+
+.chess-study-timeline-label-slot {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	min-width: 0;
+}
+
+.chess-study-timeline-label {
+	font-size: 0.68em;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: var(--text-accent);
+	line-height: 1.2;
+	text-align: right;
+	white-space: normal;
+	hyphens: auto;
+}
+
+.chess-study-timeline-label.is-mainline {
+	color: var(--text-muted);
+	font-weight: 500;
+}
+
+.chess-study-timeline-nodes {
+	--timeline-moves: 6;
+	position: relative;
+	display: grid;
+	grid-template: auto / repeat(var(--timeline-moves), minmax(5.1rem, 1fr));
+	align-items: center;
+	min-height: 2.1rem;
+	gap: 0.35rem;
+	min-width: 0;
+}
+
+.chess-study-timeline-rail {
+	position: absolute;
+	left: 0.55rem;
+	right: 0.55rem;
+	top: 50%;
+	height: 2px;
+	transform: translateY(-50%);
+	border-radius: 999px;
+	background: color-mix(
+		in srgb,
+		var(--interactive-accent) 50%,
+		var(--background-modifier-border)
+	);
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.chess-study-timeline-track.is-branch .chess-study-timeline-rail {
+	background: color-mix(
+		in srgb,
+		var(--text-accent) 40%,
+		var(--background-modifier-border)
+	);
+	opacity: 0.4;
+}
+
+.chess-study-timeline-fork {
+	position: relative;
+	height: 100%;
+	pointer-events: none;
+	grid-column: var(--timeline-col);
+}
+
+.chess-study-timeline-fork::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: 50%;
+	width: 2px;
+	/* Set in JS to span from this rail up to the mainline. */
+	height: var(--fork-height, calc(0.55rem + 1.05rem));
+	transform: translateX(-50%);
+	background: color-mix(
+		in srgb,
+		var(--text-accent) 50%,
+		var(--background-modifier-border)
+	);
+	border-radius: 2px;
+}
+
+.chess-study-timeline-node {
+	position: relative;
+	z-index: 1;
+	justify-self: stretch;
+	grid-column: var(--timeline-col);
+	min-width: 0;
+	padding: 0.28rem 0.45rem;
+	border-radius: 999px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-primary);
+	color: var(--text-muted);
+	font-family: var(--font-monospace, monospace);
+	font-size: 0.74em;
+	line-height: 1.25;
+	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	box-shadow: 0 0 0 1px
+		color-mix(in srgb, var(--interactive-accent) 8%, transparent);
+}
+
+.chess-study-timeline-node:hover {
+	color: var(--text-normal);
+	border-color: var(--interactive-accent);
+}
+
+.chess-study-timeline-node.is-active {
+	color: var(--text-normal);
+	border-color: color-mix(
+		in srgb,
+		var(--interactive-accent) 55%,
+		var(--background-modifier-border)
+	);
+	box-shadow: 0 0 0 1px
+		color-mix(in srgb, var(--interactive-accent) 30%, transparent);
+}
+
+.chess-study-timeline-node.is-current {
+	color: var(--text-on-accent, #fff);
+	background: var(--interactive-accent);
+	border-color: var(--interactive-accent);
+	box-shadow:
+		0 0 0 1px var(--interactive-accent),
+		0 0 10px color-mix(in srgb, var(--interactive-accent) 40%, transparent);
+}
+
+.chess-study-timeline-node.is-start {
+	justify-self: center;
+	min-width: 1.75rem;
+	max-width: 2.1rem;
+	padding-inline: 0.3rem;
+}
+
+.chess-study-export-modal-footer,
+.chess-study-paste-modal-footer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.5em;
+}
+
+/* ── Chessology performance analytics view ───────────────────────────── */
+
+.workspace-leaf-content[data-type="caissa-performance-dashboard"] > .view-content {
+	overflow: auto;
+	/* Must live here — this selector beats `.caissa-performance-view` alone. */
+	padding: 2.25rem 2.75rem 2.75rem;
+	box-sizing: border-box;
+}
+
+.caissa-performance-view {
+	/*
+	 * Chart palette tokens. Default / [data-chart-palette="vault"] builds
+	 * categorical series from the vault accent so graphs match the theme.
+	 * Win/loss stay readable via success/error mixed toward the accent.
+	 */
+	--caissa-chart-accent: var(--interactive-accent);
+	--caissa-chart-win: color-mix(
+		in srgb,
+		var(--color-green, var(--text-success, #5fa463)) 70%,
+		var(--interactive-accent)
+	);
+	--caissa-chart-loss: color-mix(
+		in srgb,
+		var(--color-red, var(--text-error, #e74c3c)) 70%,
+		var(--interactive-accent)
+	);
+	--caissa-chart-draw: var(--text-muted);
+	--caissa-chart-1: var(--interactive-accent);
+	--caissa-chart-2: color-mix(
+		in srgb,
+		var(--interactive-accent) 72%,
+		var(--text-muted)
+	);
+	--caissa-chart-3: color-mix(
+		in srgb,
+		var(--interactive-accent) 48%,
+		var(--text-normal)
+	);
+	--caissa-chart-4: color-mix(
+		in srgb,
+		var(--interactive-accent) 38%,
+		var(--background-modifier-border)
+	);
+	--caissa-chart-5: color-mix(
+		in srgb,
+		var(--interactive-accent) 85%,
+		var(--text-normal)
+	);
+	--caissa-chart-6: color-mix(
+		in srgb,
+		var(--interactive-accent) 55%,
+		var(--background-secondary)
+	);
+	--caissa-chart-opening: var(--caissa-chart-1);
+	--caissa-chart-middlegame: var(--caissa-chart-2);
+	--caissa-chart-endgame: var(--caissa-chart-3);
+	--caissa-chart-bullet: var(--caissa-chart-5);
+	--caissa-chart-blitz: var(--caissa-chart-2);
+	--caissa-chart-rapid: var(--caissa-chart-1);
+	--caissa-chart-classical: var(--caissa-chart-3);
+
+	max-width: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+	color: var(--text-normal);
+	container-type: inline-size;
+	container-name: caissa-performance;
+}
+
+/* Distinct theme hues for results + categories (less tied to accent). */
+.caissa-performance-view[data-chart-palette="semantic"] {
+	--caissa-chart-win: var(--color-green, var(--text-success, #5fa463));
+	--caissa-chart-loss: var(--color-red, var(--text-error, #e74c3c));
+	--caissa-chart-draw: var(--text-muted);
+	--caissa-chart-accent: var(--interactive-accent);
+	--caissa-chart-1: var(--color-blue, var(--interactive-accent));
+	--caissa-chart-2: var(--color-orange, var(--text-warning, #e67e22));
+	--caissa-chart-3: var(--color-purple, var(--interactive-accent-hover, #9b59b6));
+	--caissa-chart-4: var(--color-cyan, var(--text-accent, #4a90d9));
+	--caissa-chart-5: var(--color-pink, var(--caissa-chart-loss));
+	--caissa-chart-6: var(--color-yellow, var(--caissa-chart-2));
+}
+
+/* Quieter mixes — good on busy dashboards / strong accents. */
+.caissa-performance-view[data-chart-palette="soft"] {
+	--caissa-chart-win: color-mix(
+		in srgb,
+		var(--color-green, var(--text-success, #5fa463)) 45%,
+		var(--background-primary)
+	);
+	--caissa-chart-loss: color-mix(
+		in srgb,
+		var(--color-red, var(--text-error, #e74c3c)) 45%,
+		var(--background-primary)
+	);
+	--caissa-chart-draw: color-mix(
+		in srgb,
+		var(--text-muted) 70%,
+		var(--background-primary)
+	);
+	--caissa-chart-accent: color-mix(
+		in srgb,
+		var(--interactive-accent) 65%,
+		var(--background-primary)
+	);
+	--caissa-chart-1: color-mix(
+		in srgb,
+		var(--interactive-accent) 55%,
+		var(--background-primary)
+	);
+	--caissa-chart-2: color-mix(
+		in srgb,
+		var(--interactive-accent) 40%,
+		var(--text-muted)
+	);
+	--caissa-chart-3: color-mix(
+		in srgb,
+		var(--interactive-accent) 35%,
+		var(--text-normal)
+	);
+	--caissa-chart-4: color-mix(
+		in srgb,
+		var(--interactive-accent) 28%,
+		var(--background-modifier-border)
+	);
+	--caissa-chart-5: color-mix(
+		in srgb,
+		var(--interactive-accent) 50%,
+		var(--text-muted)
+	);
+	--caissa-chart-6: color-mix(
+		in srgb,
+		var(--interactive-accent) 30%,
+		var(--background-secondary)
+	);
+}
+
+.caissa-performance-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.caissa-performance-title-row {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.caissa-performance-title {
+	margin: 0;
+	font-size: 1.35rem;
+	font-weight: 600;
+}
+
+.caissa-performance-subtitle {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 0.9rem;
+}
+
+.caissa-performance-trend {
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	padding: 0.2rem 0.55rem;
+	border-radius: 999px;
+	border: 1px solid var(--background-modifier-border);
+}
+
+.caissa-performance-trend--improved {
+	color: var(--caissa-chart-win);
+	border-color: color-mix(in srgb, var(--caissa-chart-win) 40%, transparent);
+	background: color-mix(in srgb, var(--caissa-chart-win) 12%, transparent);
+}
+
+.caissa-performance-trend--worse {
+	color: var(--caissa-chart-loss);
+	border-color: color-mix(in srgb, var(--caissa-chart-loss) 40%, transparent);
+	background: color-mix(in srgb, var(--caissa-chart-loss) 12%, transparent);
+}
+
+.caissa-performance-trend--mixed,
+.caissa-performance-trend--insufficient {
+	color: var(--text-muted);
+}
+
+.caissa-performance-empty {
+	padding: 2rem;
+	border: 1px dashed var(--background-modifier-border);
+	border-radius: 8px;
+	color: var(--text-muted);
+	text-align: center;
+}
+
+.caissa-performance-stats {
+	display: grid;
+	grid-template: auto / repeat(2, minmax(0, 1fr));
+	gap: 0.5rem;
+}
+
+.caissa-performance-stats--combined .caissa-performance-stat {
+	padding: 0.6rem 0.7rem;
+}
+
+.caissa-performance-stats--8 .caissa-performance-stat-main {
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 0.2rem;
+}
+
+.caissa-performance-stats--8 .caissa-performance-stat-value-row {
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.caissa-performance-stats--8
+	.caissa-performance-stat-main
+	> .caissa-performance-stat-value {
+	text-align: left;
+}
+
+.caissa-performance-stats--8 .caissa-performance-stat-value {
+	font-size: 1.1rem;
+}
+
+.caissa-performance-stats--8 .caissa-performance-stat-label {
+	font-size: 0.68rem;
+}
+
+.caissa-performance-stats--8 .caissa-performance-stat-meta {
+	text-align: left;
+	min-height: 0.95rem;
+}
+
+.caissa-performance-stat-value--record {
+	display: grid;
+	grid-template: auto / 1fr auto 1fr auto 1fr;
+	align-items: baseline;
+	width: 100%;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+.caissa-stat-record-part {
+	text-align: center;
+	min-width: 0;
+}
+
+.caissa-stat-record-sep {
+	color: var(--text-muted);
+	opacity: 0.45;
+	text-align: center;
+	user-select: none;
+}
+
+.caissa-stat-record-part--win {
+	color: var(--caissa-chart-win);
+}
+
+.caissa-stat-record-part--loss {
+	color: var(--caissa-chart-loss);
+}
+
+.caissa-stat-record-part--draw {
+	color: var(--caissa-chart-draw);
+}
+
+.caissa-performance-stat-value-row {
+	display: flex;
+	align-items: baseline;
+	justify-content: flex-end;
+	gap: 0.45rem;
+	flex-wrap: wrap;
+	text-align: right;
+	min-width: 0;
+}
+
+.caissa-performance-stat-delta {
+	font-size: 0.8rem;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+.caissa-performance-stat-meta {
+	font-size: 0.72rem;
+	color: var(--text-muted);
+	text-align: right;
+}
+
+.caissa-performance-ratings-hint {
+	grid-column: 1 / -1;
+	font-size: 0.78rem;
+	color: var(--text-muted);
+	line-height: 1.4;
+}
+
+@container caissa-performance (min-width: 560px) {
+	.caissa-performance-stats--combined:not(.caissa-performance-stats--8) {
+		grid-template: auto / repeat(4, minmax(0, 1fr));
+	}
+}
+
+.caissa-performance-stats-divider {
+	display: none;
+}
+
+@container caissa-performance (min-width: 900px) {
+	.caissa-performance-stats--8 {
+		grid-template: auto / repeat(4, minmax(0, 1fr)) 0.75rem repeat(4, minmax(0, 1fr));
+	}
+
+	.caissa-performance-stats--8 .caissa-performance-stats-divider {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		align-self: stretch;
+		min-height: 100%;
+	}
+
+	.caissa-performance-stats--8 .caissa-performance-stats-divider::before {
+		content: "";
+		width: 1px;
+		height: calc(100% - 0.7rem);
+		background: color-mix(in srgb, var(--text-muted) 22%, transparent);
+	}
+}
+
+@container caissa-performance (min-width: 720px) {
+	.caissa-performance-stats:not(.caissa-performance-stats--combined) {
+		grid-template: auto / repeat(4, minmax(0, 1fr));
+	}
+}
+
+.caissa-performance-grid {
+	display: grid;
+	gap: 0.65rem;
+	align-items: stretch;
+}
+
+.caissa-performance-grid--balanced {
+	grid-auto-rows: 1fr;
+}
+
+.caissa-performance-grid--balanced .caissa-performance-panel--scroll {
+	min-height: 260px;
+	max-height: 320px;
+}
+
+.caissa-performance-grid--1 {
+	grid-template: auto / minmax(0, 1fr);
+}
+
+.caissa-performance-grid--2 {
+	grid-template: auto / repeat(2, minmax(0, 1fr));
+}
+
+.caissa-performance-grid--2-1 {
+	grid-template: auto / minmax(0, 2fr) minmax(0, 1fr);
+	grid-auto-rows: minmax(0, auto);
+}
+
+.caissa-performance-grid--2-2-1 {
+	grid-template: auto / minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr);
+	grid-auto-rows: minmax(0, auto);
+}
+
+.caissa-performance-grid--2-1 > .caissa-performance-panel--chart,
+.caissa-performance-grid--2-1 > .caissa-performance-panel--results,
+.caissa-performance-grid--2-2-1 > .caissa-performance-panel--chart,
+.caissa-performance-grid--2-2-1 > .caissa-performance-panel--results {
+	min-height: 0;
+	max-height: 220px;
+}
+
+.caissa-rating-chart-host {
+	width: 100%;
+	flex: 1;
+	min-height: 120px;
+	max-height: 140px;
+	margin: 0;
+	display: flex;
+	align-items: stretch;
+}
+
+.caissa-rating-chart {
+	display: block;
+	width: 100%;
+	height: 100%;
+	min-height: 120px;
+	max-height: 140px;
+	overflow: visible;
+}
+
+.caissa-performance-panel--games {
+	max-height: 360px;
+}
+
+.caissa-performance-grid--3 {
+	grid-template: auto / repeat(3, minmax(0, 1fr));
+}
+
+@container caissa-performance (max-width: 640px) {
+	.caissa-performance-grid--2,
+	.caissa-performance-grid--2-1,
+	.caissa-performance-grid--2-2-1,
+	.caissa-performance-grid--3 {
+		grid-template: auto / minmax(0, 1fr);
+	}
+
+	.caissa-performance-panel--span-full {
+		grid-column: auto;
+	}
+}
+
+.caissa-performance-panel {
+	padding: 0.75rem 0.9rem;
+	border-radius: 10px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-primary);
+	min-width: 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.caissa-performance-panel--compact {
+	justify-content: center;
+}
+
+.caissa-performance-panel--chart {
+	min-height: 0;
+}
+
+.caissa-performance-panel--pie {
+	align-items: stretch;
+}
+
+.caissa-performance-panel--results {
+	display: flex;
+	flex-direction: column;
+}
+
+.caissa-results-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.85rem;
+	flex: 1;
+	min-height: 0;
+}
+
+.caissa-pie-ring--results {
+	width: 120px;
+	height: 120px;
+}
+
+.caissa-pie-ring--results .caissa-pie-hole {
+	width: 74px;
+	height: 74px;
+	font-size: 1.1rem;
+}
+
+.caissa-results-legend {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.4rem;
+}
+
+.caissa-results-chip {
+	padding: 0.2rem 0.55rem;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.caissa-results-chip--win {
+	background: color-mix(in srgb, var(--caissa-chart-win) 22%, transparent);
+	color: var(--caissa-chart-win);
+}
+
+.caissa-results-chip--loss {
+	background: color-mix(in srgb, var(--caissa-chart-loss) 22%, transparent);
+	color: var(--caissa-chart-loss);
+}
+
+.caissa-results-chip--draw {
+	background: var(--background-modifier-border);
+	color: var(--text-muted);
+}
+
+.caissa-pie-body {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+	gap: 0.5rem;
+}
+
+.caissa-pie-main {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.75rem;
+	flex: 1;
+	min-height: 0;
+	padding: 0 0.15rem;
+}
+
+.caissa-pie-wrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.caissa-pie-ring {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.caissa-pie-hole {
+	width: 92px;
+	height: 92px;
+	border-radius: 50%;
+	background: var(--background-primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--text-normal);
+}
+
+.caissa-pie-legend {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.4rem;
+	flex: 0 1 auto;
+	width: max-content;
+	max-width: calc(100% - 0.5rem);
+	font-size: 0.8rem;
+}
+
+.caissa-pie-legend-item {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	white-space: nowrap;
+}
+
+.caissa-pie-swatch {
+	width: 0.55rem;
+	height: 0.55rem;
+	border-radius: 2px;
+	flex-shrink: 0;
+}
+
+.caissa-pie-legend-text {
+	color: var(--text-normal);
+	line-height: 1.25;
+}
+
+.caissa-pie-footer {
+	flex-shrink: 0;
+	min-height: 1.6rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 0.35rem;
+}
+
+.caissa-pie-footer .caissa-phase-insight {
+	margin-top: 0;
+}
+
+.caissa-pie-footer .caissa-severity-block {
+	margin-top: 0;
+	padding-top: 0.4rem;
+}
+
+.caissa-performance-grid--3 {
+	align-items: stretch;
+}
+
+.caissa-performance-grid--3 > .caissa-performance-panel--pie {
+	min-height: 220px;
+}
+
+.caissa-performance-grid--3 > .caissa-performance-panel--pie .caissa-pie-ring {
+	width: 150px;
+	height: 150px;
+}
+
+.caissa-performance-grid--3 > .caissa-performance-panel--pie .caissa-pie-hole {
+	width: 92px;
+	height: 92px;
+}
+
+.caissa-performance-grid--2-1 > .caissa-performance-panel--results,
+.caissa-performance-grid--2-2-1 > .caissa-performance-panel--results {
+	align-self: stretch;
+}
+
+.caissa-performance-panel--scroll .caissa-performance-panel-body {
+	flex: 1;
+	min-height: 0;
+	overflow: auto;
+}
+
+.caissa-performance-panel-body {
+	min-width: 0;
+}
+
+.caissa-performance-results-compact {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	flex: 1;
+	flex-wrap: wrap;
+}
+
+.caissa-performance-panel--span-full {
+	grid-column: 1 / -1;
+}
+
+.caissa-performance-panel--full {
+	width: 100%;
+}
+
+.caissa-performance-stat {
+	padding: 0.85rem 1rem;
+	border-radius: 8px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-secondary);
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.caissa-performance-stat-main {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.75rem;
+	min-width: 0;
+}
+
+.caissa-performance-stat-label {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--text-muted);
+	flex-shrink: 0;
+}
+
+.caissa-performance-stat-value {
+	font-size: 1.25rem;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+	flex-shrink: 0;
+}
+
+.caissa-performance-stat-main > .caissa-performance-stat-value-row {
+	flex: 1 1 auto;
+}
+
+.caissa-performance-panel h3 {
+	margin: 0 0 0.5rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	flex-shrink: 0;
+}
+
+.caissa-performance-donut-wrap {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	flex-shrink: 0;
+}
+
+.caissa-donut-ring {
+	width: 88px;
+	height: 88px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.caissa-donut-hole {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: var(--background-primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.caissa-performance-legend {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	font-size: 0.8rem;
+	flex: 1;
+	min-width: 5.5rem;
+}
+
+.caissa-performance-legend-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.caissa-performance-swatch {
+	width: 10px;
+	height: 10px;
+	border-radius: 2px;
+	flex-shrink: 0;
+}
+
+.caissa-performance-swatch--win {
+	background: var(--caissa-chart-win);
+}
+
+.caissa-performance-swatch--loss {
+	background: var(--caissa-chart-loss);
+}
+
+.caissa-performance-swatch--draw {
+	background: var(--text-muted);
+}
+
+.caissa-performance-compare {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	margin-bottom: 0.5rem;
+}
+
+.caissa-performance-compare-label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--text-muted);
+}
+
+.caissa-performance-compare-rows {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.caissa-performance-bar-row {
+	display: grid;
+	grid-template: auto / 4.5rem 1fr 2.5rem;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.8rem;
+}
+
+.caissa-performance-bar-label,
+.caissa-performance-bar-value {
+	color: var(--text-muted);
+}
+
+.caissa-performance-bar-track {
+	height: 8px;
+	border-radius: 4px;
+	background: var(--background-modifier-border);
+	overflow: hidden;
+}
+
+.caissa-performance-bar-fill {
+	height: 100%;
+	border-radius: 4px;
+	min-width: 2px;
+}
+
+.caissa-performance-bar-fill--older {
+	background: var(--text-muted);
+}
+
+.caissa-performance-bar-fill--recent {
+	background: var(--interactive-accent);
+}
+
+.caissa-performance-bar-fill--opening {
+	background: var(--interactive-accent);
+}
+
+.caissa-performance-bar-fill--phase-opening {
+	background: var(--caissa-chart-opening);
+}
+
+.caissa-performance-bar-fill--phase-middlegame {
+	background: var(--caissa-chart-middlegame);
+}
+
+.caissa-performance-bar-fill--phase-endgame {
+	background: var(--caissa-chart-endgame);
+}
+
+.caissa-phase-stack {
+	display: flex;
+	width: 100%;
+	height: 0.55rem;
+	border-radius: 999px;
+	overflow: hidden;
+	background: var(--background-modifier-border);
+	margin: 0.25rem 0 0.5rem;
+}
+
+.caissa-phase-stack--compact {
+	height: 0.45rem;
+	margin: 0.35rem 0 0.25rem;
+}
+
+.caissa-phase-stack-seg {
+	min-width: 2px;
+}
+
+.caissa-phase-stack-seg--opening {
+	background: var(--caissa-chart-opening);
+}
+
+.caissa-phase-stack-seg--middlegame {
+	background: var(--caissa-chart-middlegame);
+}
+
+.caissa-phase-stack-seg--endgame {
+	background: var(--caissa-chart-endgame);
+}
+
+.caissa-phase-stack-seg--blunder {
+	background: var(--caissa-chart-loss);
+}
+
+.caissa-phase-stack-seg--inaccuracy {
+	background: color-mix(in srgb, var(--caissa-chart-2) 80%, var(--text-muted));
+}
+
+.caissa-phase-rows {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+}
+
+.caissa-phase-row {
+	display: grid;
+	grid-template: auto / 5.5rem minmax(0, 1fr) auto;
+	gap: 0.5rem;
+	align-items: center;
+	font-size: 0.82rem;
+}
+
+.caissa-phase-row--weakest .caissa-phase-label {
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.caissa-phase-label {
+	color: var(--text-muted);
+}
+
+.caissa-phase-meta {
+	color: var(--text-muted);
+	white-space: nowrap;
+	font-size: 0.78rem;
+}
+
+.caissa-phase-insight {
+	margin-top: 0.45rem;
+	font-size: 0.78rem;
+	color: var(--text-muted);
+	line-height: 1.4;
+}
+
+.caissa-severity-block {
+	margin-top: 0.85rem;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--background-modifier-border);
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.caissa-severity-label {
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--text-muted);
+}
+
+.caissa-performance-timeline-chip--accuracy-high {
+	background: color-mix(in srgb, var(--caissa-chart-win) 22%, transparent);
+	color: var(--caissa-chart-win);
+	border-color: color-mix(in srgb, var(--caissa-chart-win) 35%, transparent);
+}
+
+.caissa-performance-timeline-chip--accuracy-mid {
+	background: color-mix(in srgb, var(--caissa-chart-2) 22%, transparent);
+	color: var(--caissa-chart-2);
+	border-color: color-mix(in srgb, var(--caissa-chart-2) 35%, transparent);
+}
+
+.caissa-performance-timeline-chip--accuracy-low {
+	background: color-mix(in srgb, var(--caissa-chart-loss) 22%, transparent);
+	color: var(--caissa-chart-loss);
+	border-color: color-mix(in srgb, var(--caissa-chart-loss) 35%, transparent);
+}
+
+.caissa-scatter-plot {
+	position: relative;
+	width: 100%;
+	height: 160px;
+	margin: 0.5rem 0;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
+	background: linear-gradient(
+		to top,
+		color-mix(in srgb, var(--caissa-chart-win) 6%, transparent),
+		transparent 40%
+	);
+}
+
+.caissa-scatter-dot {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	margin-left: -5px;
+	margin-bottom: -5px;
+	border-radius: 50%;
+	cursor: pointer;
+	border: 2px solid var(--background-primary);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.caissa-scatter-dot--win {
+	background: var(--caissa-chart-win);
+}
+
+.caissa-scatter-dot--loss {
+	background: var(--caissa-chart-loss);
+}
+
+.caissa-scatter-dot--draw {
+	background: var(--text-muted);
+}
+
+.caissa-scatter-dot--unknown {
+	background: var(--interactive-accent);
+}
+
+.caissa-scatter-dot:hover {
+	transform: scale(1.25);
+}
+
+.caissa-scatter-axes {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.7rem;
+	color: var(--text-muted);
+}
+
+.caissa-rating-bands {
+	margin-top: 0.85rem;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--background-modifier-border);
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+}
+
+.caissa-performance-delta {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+}
+
+.caissa-performance-delta--up {
+	color: var(--caissa-chart-win);
+}
+
+.caissa-performance-delta--down {
+	color: var(--caissa-chart-loss);
+}
+
+.caissa-performance-trend-list {
+	margin: 0.35rem 0 0;
+	padding-left: 1.1rem;
+	font-size: 0.78rem;
+	color: var(--text-muted);
+	line-height: 1.4;
+}
+
+.caissa-performance-trend-list li + li {
+	margin-top: 0.15rem;
+}
+
+.caissa-performance-timeline-banner {
+	padding: 0.6rem 0.85rem;
+	border-radius: 10px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-secondary);
+}
+
+.caissa-performance-timeline-banner-label {
+	display: block;
+	font-size: 0.72rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--text-muted);
+	margin-bottom: 0.6rem;
+}
+
+.caissa-aligned-timeline-scroll {
+	overflow-x: auto;
+	padding-bottom: 0.35rem;
+	scrollbar-width: thin;
+	-webkit-overflow-scrolling: touch;
+}
+
+.caissa-aligned-timeline-grid {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 0.5rem;
+	align-items: flex-end;
+}
+
+.caissa-timeline-col {
+	flex: 0 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.35rem;
+	min-width: 3.5rem;
+	cursor: pointer;
+}
+
+.caissa-timeline-col-date {
+	font-size: 0.62rem;
+	color: var(--text-muted);
+	white-space: nowrap;
+}
+
+.caissa-timeline-col .caissa-performance-timeline-chip {
+	width: 100%;
+	min-width: 3.25rem;
+}
+
+.caissa-performance-timeline-chip--missing {
+	background: var(--background-primary);
+	color: var(--text-muted);
+	border: 1px dashed var(--background-modifier-border);
+	opacity: 0.85;
+}
+
+.caissa-rating-legend {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.45rem 0.85rem;
+	margin-top: 0.35rem;
+	font-size: 0.75rem;
+	color: var(--text-muted);
+	flex-shrink: 0;
+}
+
+.caissa-rating-legend-item {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.caissa-rating-legend-swatch {
+	width: 0.65rem;
+	height: 0.65rem;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.caissa-rating-legend-hint {
+	font-size: 0.7rem;
+	opacity: 0.85;
+}
+
+.caissa-performance-panel-wrap {
+	margin-top: 0.75rem;
+}
+
+.caissa-performance-timeline {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	gap: 0.5rem;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding-bottom: 0.35rem;
+	scrollbar-width: thin;
+	-webkit-overflow-scrolling: touch;
+}
+
+.caissa-performance-timeline-chip {
+	flex: 0 0 auto;
+	min-width: 3.25rem;
+	padding: 0.35rem 0.45rem;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.15rem;
+	cursor: pointer;
+	border: 1px solid transparent;
+	transition: transform 0.1s ease;
+}
+
+.caissa-performance-timeline-chip:hover {
+	transform: translateY(-1px);
+}
+
+.caissa-performance-timeline-chip--win {
+	background: color-mix(in srgb, var(--caissa-chart-win) 22%, transparent);
+	color: var(--caissa-chart-win);
+	border-color: color-mix(in srgb, var(--caissa-chart-win) 35%, transparent);
+}
+
+.caissa-performance-timeline-chip--loss {
+	background: color-mix(in srgb, var(--caissa-chart-loss) 22%, transparent);
+	color: var(--caissa-chart-loss);
+	border-color: color-mix(in srgb, var(--caissa-chart-loss) 35%, transparent);
+}
+
+.caissa-performance-timeline-chip--draw {
+	background: var(--background-modifier-border);
+	color: var(--text-muted);
+}
+
+.caissa-performance-timeline-chip--unknown {
+	background: var(--background-primary);
+	color: var(--text-muted);
+}
+
+.caissa-performance-timeline-result {
+	font-size: 0.85rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.caissa-performance-timeline-meta {
+	font-size: 0.62rem;
+	opacity: 0.85;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.caissa-performance-empty-inline {
+	font-size: 0.85rem;
+	color: var(--text-muted);
+	line-height: 1.5;
+	flex: 1;
+	display: flex;
+	align-items: center;
+}
+
+.caissa-performance-panel-scroll {
+	flex: 1;
+	min-height: 0;
+	overflow: auto;
+}
+
+.caissa-performance-sparkline {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.caissa-mistake-chart {
+	display: flex;
+	align-items: flex-end;
+	gap: 0.35rem;
+	min-height: 120px;
+	padding: 0.5rem 0 0;
+}
+
+.caissa-mistake-col {
+	flex: 1 1 0;
+	min-width: 1.5rem;
+	max-width: 2.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 0.25rem;
+	height: 120px;
+	cursor: pointer;
+}
+
+.caissa-mistake-bar {
+	width: 100%;
+	border-radius: 4px 4px 0 0;
+	min-height: 4px;
+}
+
+.caissa-mistake-bar--win {
+	background: var(--caissa-chart-win);
+}
+
+.caissa-mistake-bar--loss {
+	background: var(--caissa-chart-loss);
+}
+
+.caissa-mistake-bar--draw {
+	background: var(--text-muted);
+}
+
+.caissa-mistake-bar--unknown {
+	background: var(--interactive-accent);
+}
+
+.caissa-mistake-value {
+	font-size: 0.7rem;
+	color: var(--text-muted);
+}
+
+.caissa-performance-openings {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+}
+
+.caissa-performance-opening-row {
+	display: grid;
+	grid-template: auto / minmax(0, 1fr) minmax(0, 0.85fr) auto;
+	gap: 0.4rem;
+	align-items: center;
+	font-size: 0.78rem;
+}
+
+.caissa-performance-opening-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.caissa-performance-opening-meta {
+	color: var(--text-muted);
+	white-space: nowrap;
+}
+
+.caissa-performance-openings,
+.caissa-performance-table,
+.caissa-performance-timeline,
+.caissa-performance-sparkline,
+.caissa-mistake-chart {
+	flex: 1;
+	min-width: 0;
+}
+
+@container caissa-performance (min-width: 560px) and (max-width: 899px) {
+	.caissa-performance-stats--8 {
+		grid-template: auto / repeat(4, minmax(0, 1fr));
+	}
+
+	.caissa-performance-stats--8 .caissa-performance-stats-divider {
+		display: none;
+	}
+}
+
+.caissa-performance-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.85rem;
+}
+
+.caissa-performance-table th,
+.caissa-performance-table td {
+	padding: 0.45rem 0.55rem;
+	border-bottom: 1px solid var(--background-modifier-border);
+	text-align: left;
+}
+
+.caissa-performance-table th {
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--text-muted);
+}
+
+.caissa-performance-table--games tbody tr {
+	cursor: pointer;
+}
+
+.caissa-performance-table--games tbody tr:hover {
+	background: var(--background-modifier-hover);
+}
+
+.caissa-result--win {
+	color: var(--caissa-chart-win);
+	font-weight: 600;
+}
+
+.caissa-result--loss {
+	color: var(--caissa-chart-loss);
+	font-weight: 600;
+}
+
+.caissa-schedule-insights {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	margin: 0 0 0.75rem;
+	padding: 0.55rem 0.75rem;
+	border-radius: 8px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.caissa-schedule-insight {
+	font-size: 0.85rem;
+	line-height: 1.4;
+	color: var(--text-muted);
+}
+
+.caissa-schedule-bars {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	margin-top: 0.35rem;
+}
+
+.caissa-schedule-row {
+	display: grid;
+	grid-template: auto / 5.5rem minmax(0, 1fr) auto;
+	gap: 0.55rem;
+	align-items: center;
+}
+
+.caissa-schedule-label {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.caissa-schedule-track {
+	height: 0.55rem;
+	border-radius: 999px;
+	background: var(--background-modifier-border);
+	overflow: hidden;
+}
+
+.caissa-schedule-fill {
+	height: 100%;
+	width: 0;
+	border-radius: inherit;
+	min-width: 0;
+}
+
+.caissa-schedule-meta {
+	font-size: 0.75rem;
+	color: var(--text-muted);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+	text-align: right;
+}
+
+.caissa-theme-up {
+	color: var(--caissa-chart-2);
+}
+
+.caissa-theme-down {
+	color: var(--caissa-chart-win);
+}
+
+/* Stockfish bulk-analysis progress modal */
+.caissa-stockfish-progress {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+	min-width: min(28rem, 90vw);
+}
+
+.caissa-stockfish-progress-label {
+	font-size: 0.95rem;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.caissa-stockfish-progress-label--sub {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: var(--text-muted);
+}
+
+.caissa-stockfish-progress-track {
+	height: 0.55rem;
+	border-radius: 999px;
+	background: var(--background-modifier-border);
+	overflow: hidden;
+}
+
+.caissa-stockfish-progress-track--sub {
+	height: 0.4rem;
+}
+
+.caissa-stockfish-progress-bar {
+	height: 100%;
+	width: 0%;
+	border-radius: inherit;
+	background: var(--interactive-accent);
+	transition: width 120ms ease-out;
+}
+
+.caissa-stockfish-progress-bar--sub {
+	background: var(--text-accent, var(--interactive-accent));
+	opacity: 0.85;
+}
+
+.caissa-stockfish-progress-status {
+	font-size: 0.85rem;
+	color: var(--text-muted);
+}
+
+.caissa-stockfish-progress-elapsed {
+	font-size: 0.8rem;
+	color: var(--text-faint);
+	font-variant-numeric: tabular-nums;
+}
